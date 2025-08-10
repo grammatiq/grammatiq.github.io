@@ -2,7 +2,7 @@ name: Deploy static site to GitHub Pages
 
 on:
   push:
-    branches: [ main, cursor/host-project-on-github-pages-410b ]
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
@@ -33,6 +33,7 @@ jobs:
           path: landing
 
   deploy:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs: build
     environment:
