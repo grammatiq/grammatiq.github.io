@@ -2,7 +2,7 @@ name: Deploy static site to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, cursor/host-project-on-github-pages-410b ]
   workflow_dispatch:
 
 permissions:
