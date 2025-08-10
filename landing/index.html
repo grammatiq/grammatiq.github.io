@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Magyar AI Szövegasszisztens – helyesírás, stílus, átfogalmazás</title>
+    <meta name="description" content="Írj jobban magyarul. AI-alapú helyesírás, stílusjavítás és hangnem-átírás. Iratkozz fel, és elsőként kapj értesítést az ingyenes 7 napos hozzáférésről." />
+    <meta name="theme-color" content="#0ea5e9" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Magyar AI Szövegasszisztens" />
+    <meta property="og:description" content="AI-alapú helyesírás, stílusjavítás és hangnem-átírás. Iratkozz fel az ingyenes 7 napért!" />
+    <meta property="og:image" content="/og-image.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#" aria-label="Főoldal">
+          <span class="logo-mark" aria-hidden="true">✦</span>
+          <span class="logo-text">Magyar AI Szövegasszisztens</span>
+        </a>
+        <nav class="top-nav" aria-label="Fő navigáció">
+          <a href="#features">Funkciók</a>
+          <a href="#how">Hogyan működik</a>
+          <a href="#faq">GYIK</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <h1>Írj <span class="accent">jobban magyarul</span>, pillanatok alatt</h1>
+            <p class="lead">
+              Helyesírás, nyelvtan, stílus és hangnem – egyetlen eszközben. Illeszd be a szöveget, és kapj azonnali, természetes hangzású javaslatokat.
+            </p>
+            <ul class="benefits">
+              <li>Helyesírás és nyelvtani javítás</li>
+              <li>Stílus- és hangnem-váltás (formális / baráti / szakmai)</li>
+              <li>Parafrázis, rövidítés és bővítés</li>
+            </ul>
+
+            <div class="cta-panel">
+              <h2>Iratkozz fel az érdeklődői listára</h2>
+              <p class="muted">Elsőként kapod meg az <strong>ingyenes 7 napos</strong> hozzáférés linkjét.</p>
+
+              <!--
+                Mailchimp integráció:
+                1) Nyisd meg a Mailchimp listád (Audience) > Signup forms > Embedded forms
+                2) Másold ki a form "action" URL-jét (subscribe/post?u=...&id=...)
+                3) Cseréld az alábbi form action értékét a sajátodra
+              -->
+              <form
+                id="waitlist-form"
+                class="waitlist-form"
+                action="https://YOUR_DC.list-manage.com/subscribe/post?u=YOUR_U&id=YOUR_ID"
+                method="post"
+                target="_blank"
+                novalidate
+              >
+                <div class="form-row">
+                  <label for="mce-EMAIL" class="visually-hidden">Email cím</label>
+                  <input
+                    type="email"
+                    name="EMAIL"
+                    id="mce-EMAIL"
+                    autocomplete="email"
+                    placeholder="Add meg az email címed"
+                    required
+                    inputmode="email"
+                  />
+                  <button id="submit-btn" type="submit" class="btn-primary">Csatlakozom</button>
+                </div>
+
+                <!-- Spam-megelőzés (honeypot) -->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                  <input type="text" name="b_YOUR_U_YOUR_ID" tabindex="-1" value="" />
+                </div>
+
+                <div class="consent-row">
+                  <input type="checkbox" id="consent" required />
+                  <label for="consent">Hozzájárulok, hogy emailt kapjak a szolgáltatásról. Bármikor leiratkozhatok.</label>
+                </div>
+
+                <p id="form-hint" class="form-hint" role="status" aria-live="polite"></p>
+              </form>
+
+              <p class="disclaimer">A feliratkozást a Mailchimp kezeli. Nem küldünk spamet, és nem adjuk el az adataidat.</p>
+            </div>
+
+            <p class="early-note">Modell: Freemium + havi előfizetés. Early adopterként kedvezményes árat kapsz.</p>
+          </div>
+
+          <div class="hero-visual" aria-hidden="true">
+            <div class="glass-card">
+              <div class="editor-line"><span class="token">Helyesírás:</span> Köszönöm szépen az információkat.</div>
+              <div class="editor-line"><span class="token ok">Javaslat:</span> Köszönöm szépen az információkat!</div>
+              <div class="editor-line"><span class="token warn">Stílus:</span> Tegyük kicsit barátibbá a hangnemet.</div>
+              <div class="editor-line"><span class="token ok">Átírás:</span> Köszi az infókat!</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="features">
+        <div class="container">
+          <h2>Miért lesz ez jobb magyarul?</h2>
+          <div class="feature-grid">
+            <div class="feature-item">
+              <h3>Pontosság magyar nyelven</h3>
+              <p>Finomhangolt modell magyar helyesírásra és nyelvtanra – nem csak szóhelyes, hanem természetes is.</p>
+            </div>
+            <div class="feature-item">
+              <h3>Stílus és hangnem</h3>
+              <p>Formális levél, baráti üzenet vagy szakmai összefoglaló – egyszerűen válthatsz hangnemet.</p>
+            </div>
+            <div class="feature-item">
+              <h3>Időmegtakarítás</h3>
+              <p>Másold be a szöveget, és pár másodperc alatt kész a javított változat.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="how" class="how">
+        <div class="container">
+          <h2>Hogyan működik?</h2>
+          <ol class="steps">
+            <li>Beilleszted a magyar szöveget</li>
+            <li>AI megkeresi a hibákat és javaslatokat ad</li>
+            <li>Elfogadod, átfogalmazod, exportálod</li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="faq" class="faq">
+        <div class="container">
+          <h2>GYIK</h2>
+          <details>
+            <summary>Lesz ingyenes csomag?</summary>
+            <p>Igen, freemium verzió elérhető lesz korlátozott napi használattal.</p>
+          </details>
+          <details>
+            <summary>Kapok ingyenes próbaidőt?</summary>
+            <p>Igen, induláskor <strong>7 nap</strong> ingyenes hozzáférést küldünk a feliratkozóknak.</p>
+          </details>
+          <details>
+            <summary>Hogyan védjük az adataidat?</summary>
+            <p>Az emaileket a Mailchimp kezeli, bármikor leiratkozhatsz egy kattintással.</p>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> Magyar AI Szövegasszisztens</p>
+        <div class="footer-links">
+          <a href="#">Adatkezelés</a>
+          <a href="#">Felhasználási feltételek</a>
+          <a href="#features">Funkciók</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./script.js" defer></script>
+  </body>
+</html>
