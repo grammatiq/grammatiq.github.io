@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  // Mobile menu functionality
+  // Mobil menü működés
   const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
   const mobileNav = document.querySelector('.mobile-nav');
   const mobileNavClose = document.querySelector('.mobile-nav-close');
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.style.overflow = '';
     });
 
-    // Close menu when clicking on a link
+    // Menü zárása linkre kattintáskor
     mobileNav.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         mobileNav.classList.remove('active');
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Close menu when clicking outside
+    // Menü zárása a háttérre kattintva
     mobileNav.addEventListener('click', (e) => {
       if (e.target === mobileNav) {
         mobileNav.classList.remove('active');
@@ -52,31 +52,31 @@ document.addEventListener('DOMContentLoaded', () => {
       const email = emailInput.value.trim();
       if (!email) {
         e.preventDefault();
-        showHint('Please enter your email address.', 'error');
+        showHint('Kérlek, add meg az e‑mail‑címed.', 'error');
         emailInput.focus();
         return;
       }
       if (!consent.checked) {
         e.preventDefault();
-        showHint('Please check the consent box.', 'error');
+        showHint('Kérlek, jelöld be a hozzájárulást.', 'error');
         consent.focus();
         return;
       }
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending…';
-      showHint('Redirecting to Mailchimp…');
+      submitBtn.textContent = 'Küldés…';
+      showHint('Átirányítás a Mailchimpre…');
     });
 
     emailInput.addEventListener('input', () => {
       if (emailInput.value.length > 0) {
-        showHint('We handle your data securely.');
+        showHint('Az adataidat biztonságosan kezeljük.');
       } else {
         showHint('');
       }
     });
   }
 
-  // Demo: dynamic typing and transformation (multiple variants)
+  // Demo: dinamikus gépelés és transzformáció (több variáns)
   const originalTarget = document.getElementById('typed-original');
   const correctedTarget = document.getElementById('typed-corrected');
 
@@ -92,10 +92,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const demoPairs = [
-    { original: 'We’re launching next week. Draft press note below.', corrected: 'Press note: concise lead, clear benefit, source link, embargo details.' },
-    { original: 'Notes: Q2 results, growth in EU, new product beta.', corrected: 'Story draft: Q2 EU growth confirmed. Add chart, cite CFO call, link 10‑Q.' },
-    { original: 'Blog idea: customer story about ramp time.', corrected: 'Article outline: headline options, quotes, proof points, CTA. On‑brand tone.' },
-    { original: 'Need LinkedIn + X post from the article.', corrected: 'Social suite: LinkedIn post, X thread, platform‑native hooks, alt text.' },
+    { original: 'Jövő héten indulunk. Alább egy sajtóközlemény‑vázlat.', corrected: 'Sajtóközlemény: tömör lead, világos előny, forráslink, embargó.' },
+    { original: 'Jegyzetek: Q2 eredmények, EU növekedés, új termék béta.', corrected: 'Cikkvázlat: Q2 EU növekedés megerősítve. Grafikon, CFO call hivatkozás, 10‑Q link.' },
+    { original: 'Blog ötlet: ügyfélsztori a bevezetési időről.', corrected: 'Cikk struktúra: címopciók, idézetek, bizonyítékok, CTA. Márkahű tónus.' },
+    { original: 'Kell LinkedIn + X poszt a cikkből.', corrected: 'Social csomag: LinkedIn poszt, X thread, natív hookok, alt szöveg.' },
   ];
 
   async function runTypingDemo() {
