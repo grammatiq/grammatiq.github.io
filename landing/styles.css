@@ -215,6 +215,11 @@ body {
 .token.ok { color: var(--ok); }
 .token.warn { color: var(--warning); }
 
+/* typing caret */
+.typing { display: inline-block; min-width: 1px; border-right: 2px solid var(--accent); white-space: pre; animation: caret 1s step-end infinite; }
+.typing.ok { border-right-color: var(--ok); }
+@keyframes caret { 50% { border-color: transparent; } }
+
 /* Features */
 .features { padding: 40px 0; }
 .features h2 { margin: 0 0 20px; }

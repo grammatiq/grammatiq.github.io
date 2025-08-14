@@ -75,4 +75,35 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Demo: dinamikus gépelés és javítás
+  const originalTarget = document.getElementById('typed-original');
+  const correctedTarget = document.getElementById('typed-corrected');
+
+  const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+  async function typeInto(el, text, minDelay = 28, maxDelay = 60) {
+    if (!el) return;
+    el.textContent = '';
+    for (const char of text) {
+      el.textContent += char;
+      const delay = Math.floor(minDelay + Math.random() * (maxDelay - minDelay));
+      await sleep(delay);
+    }
+  }
+
+  async function runTypingDemo() {
+    if (!originalTarget || !correctedTarget) return;
+    const originalText = 'Koszonom szepen az informaciokat.';
+    const correctedText = 'Köszönöm szépen az információkat!';
+    while (true) {
+      originalTarget.textContent = '';
+      correctedTarget.textContent = '';
+      await sleep(400);
+      await typeInto(originalTarget, originalText, 26, 55);
+      await sleep(700);
+      await typeInto(correctedTarget, correctedText, 24, 50);
+      await sleep(1800);
+    }
+  }
+  runTypingDemo();
 });
