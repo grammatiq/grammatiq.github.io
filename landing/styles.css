@@ -225,6 +225,8 @@ body {
 .features h2 { margin: 0 0 20px; }
 .feature-grid { display: grid; gap: 14px; grid-template-columns: repeat(3, 1fr); }
 .feature-item { background: var(--card); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 16px; }
+.feature-item ul { margin: 10px 0 0; padding-left: 18px; color: var(--muted); }
+.feature-item li { margin: 6px 0; }
 
 /* How */
 .how { padding: 24px 0 40px; }
