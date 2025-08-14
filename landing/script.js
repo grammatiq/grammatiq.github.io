@@ -52,31 +52,31 @@ document.addEventListener('DOMContentLoaded', () => {
       const email = emailInput.value.trim();
       if (!email) {
         e.preventDefault();
-        showHint('Kérlek, add meg az e-mail-címed.', 'error');
+        showHint('Please enter your email address.', 'error');
         emailInput.focus();
         return;
       }
       if (!consent.checked) {
         e.preventDefault();
-        showHint('Kérlek, jelöld be a hozzájárulást.', 'error');
+        showHint('Please check the consent box.', 'error');
         consent.focus();
         return;
       }
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Küldés...';
-      showHint('Átirányítás a Mailchimpre...');
+      submitBtn.textContent = 'Sending…';
+      showHint('Redirecting to Mailchimp…');
     });
 
     emailInput.addEventListener('input', () => {
       if (emailInput.value.length > 0) {
-        showHint('Az adataidat biztonságosan kezeljük.');
+        showHint('We handle your data securely.');
       } else {
         showHint('');
       }
     });
   }
 
-  // Demo: dinamikus gépelés és javítás (több változat)
+  // Demo: dynamic typing and transformation (multiple variants)
   const originalTarget = document.getElementById('typed-original');
   const correctedTarget = document.getElementById('typed-corrected');
 
@@ -92,14 +92,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const demoPairs = [
-    { original: 'Koszonom szepen az informaciokat.', corrected: 'Köszönöm szépen az információkat!' },
-    { original: 'Szia, hogyvagy? Remélem minden rendben van.', corrected: 'Szia, hogy vagy? Remélem, minden rendben van.' },
-    { original: 'Meg nézem holnap, de, lehet hogy csak hétfőn küldöm.', corrected: 'Megnézem holnap, de lehet, hogy csak hétfőn küldöm.' },
-    { original: 'Küld el kérlek az e-mail cimed.', corrected: 'Küldd el, kérlek, az e-mail-címed.' },
-    { original: 'A projekt-et már leadtuk, viszont még vissza kell igazolni.', corrected: 'A projektet már leadtuk, viszont még vissza kell igazolni.' },
-    { original: 'Tavaly Novemberben kezdtük el a fejlesztést.', corrected: 'Tavaly novemberben kezdtük el a fejlesztést.' },
-    { original: 'Ma 3 kor találkozunk?', corrected: 'Ma 3-kor találkozunk?' },
-    { original: 'Kérlek ird meg, hogy mikor érnél rá.', corrected: 'Kérlek, írd meg, hogy mikor érnél rá.' },
+    { original: 'We’re launching next week. Draft press note below.', corrected: 'Press note: concise lead, clear benefit, source link, embargo details.' },
+    { original: 'Notes: Q2 results, growth in EU, new product beta.', corrected: 'Story draft: Q2 EU growth confirmed. Add chart, cite CFO call, link 10‑Q.' },
+    { original: 'Blog idea: customer story about ramp time.', corrected: 'Article outline: headline options, quotes, proof points, CTA. On‑brand tone.' },
+    { original: 'Need LinkedIn + X post from the article.', corrected: 'Social suite: LinkedIn post, X thread, platform‑native hooks, alt text.' },
   ];
 
   async function runTypingDemo() {
