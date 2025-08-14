@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const email = emailInput.value.trim();
       if (!email) {
         e.preventDefault();
-        showHint('Kérlek, add meg az email címed.', 'error');
+        showHint('Kérlek, add meg az e-mail-címed.', 'error');
         emailInput.focus();
         return;
       }
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Demo: dinamikus gépelés és javítás
+  // Demo: dinamikus gépelés és javítás (több változat)
   const originalTarget = document.getElementById('typed-original');
   const correctedTarget = document.getElementById('typed-corrected');
 
@@ -91,18 +91,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  const demoPairs = [
+    { original: 'Koszonom szepen az informaciokat.', corrected: 'Köszönöm szépen az információkat!' },
+    { original: 'Szia, hogyvagy? Remélem minden rendben van.', corrected: 'Szia, hogy vagy? Remélem, minden rendben van.' },
+    { original: 'Meg nézem holnap, de, lehet hogy csak hétfőn küldöm.', corrected: 'Megnézem holnap, de lehet, hogy csak hétfőn küldöm.' },
+    { original: 'Küld el kérlek az e-mail cimed.', corrected: 'Küldd el, kérlek, az e-mail-címed.' },
+    { original: 'A projekt-et már leadtuk, viszont még vissza kell igazolni.', corrected: 'A projektet már leadtuk, viszont még vissza kell igazolni.' },
+    { original: 'Tavaly Novemberben kezdtük el a fejlesztést.', corrected: 'Tavaly novemberben kezdtük el a fejlesztést.' },
+    { original: 'Ma 3 kor találkozunk?', corrected: 'Ma 3-kor találkozunk?' },
+    { original: 'Kérlek ird meg, hogy mikor érnél rá.', corrected: 'Kérlek, írd meg, hogy mikor érnél rá.' },
+  ];
+
   async function runTypingDemo() {
     if (!originalTarget || !correctedTarget) return;
-    const originalText = 'Koszonom szepen az informaciokat.';
-    const correctedText = 'Köszönöm szépen az információkat!';
+    let idx = 0;
     while (true) {
+      const pair = demoPairs[idx];
       originalTarget.textContent = '';
       correctedTarget.textContent = '';
       await sleep(400);
-      await typeInto(originalTarget, originalText, 26, 55);
+      await typeInto(originalTarget, pair.original, 26, 55);
       await sleep(700);
-      await typeInto(correctedTarget, correctedText, 24, 50);
+      await typeInto(correctedTarget, pair.corrected, 24, 50);
       await sleep(1800);
+      idx = (idx + 1) % demoPairs.length;
     }
   }
   runTypingDemo();
