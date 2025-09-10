@@ -202,23 +202,84 @@ body {
 .early-note { font-size: 14px; color: var(--muted); margin: 12px 0 0; }
 
 .hero-visual { display: flex; justify-content: center; }
-.glass-card {
-  width: min(520px, 90%);
+
+/* Workflow Presentation */
+.workflow-presentation {
+  width: min(600px, 90%);
   background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 16px;
-  padding: 16px;
+  padding: 24px;
   box-shadow: 0 16px 60px rgba(2, 8, 23, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
-.editor-line { display: flex; align-items: center; gap: 8px; background: rgba(3, 8, 23, 0.66); border: 1px solid rgba(255,255,255,0.06); padding: 10px 12px; border-radius: 10px; margin: 10px 0; overflow: hidden; }
-.token { color: var(--accent); font-weight: 700; }
-.token.ok { color: var(--ok); }
-.token.warn { color: var(--warning); }
 
-/* typing caret */
-.typing { display: inline-block; min-width: 1px; border-right: 2px solid var(--accent); white-space: nowrap; animation: caret 1s step-end infinite; }
-.typing.ok { border-right-color: var(--ok); }
-@keyframes caret { 50% { border-color: transparent; } }
+.workflow-step {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(3, 8, 23, 0.66);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.workflow-step:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(2, 8, 23, 0.3);
+}
+
+.workflow-step.final {
+  background: linear-gradient(135deg, rgba(52, 211, 153, 0.1), rgba(34, 211, 238, 0.1));
+  border-color: rgba(52, 211, 153, 0.2);
+}
+
+.step-icon {
+  font-size: 24px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.workflow-step.final .step-icon {
+  background: linear-gradient(135deg, rgba(52, 211, 153, 0.2), rgba(34, 211, 238, 0.2));
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-content h4 {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.workflow-step.final .step-content h4 {
+  color: var(--accent);
+}
+
+.step-content p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.step-arrow {
+  font-size: 20px;
+  color: var(--accent);
+  font-weight: bold;
+  flex-shrink: 0;
+}
 
 /* Quick Wins */
 .quick-wins { padding: 40px 0; }
@@ -481,14 +542,33 @@ body {
     font-size: 16px;
   }
   
-  .glass-card {
+  .workflow-presentation {
     width: 100%;
-    padding: 12px;
+    padding: 16px;
+    gap: 12px;
   }
   
-  .editor-line {
-    padding: 8px 10px;
-    font-size: 14px;
+  .workflow-step {
+    padding: 12px;
+    gap: 12px;
+  }
+  
+  .step-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+  
+  .step-content h4 {
+    font-size: 15px;
+  }
+  
+  .step-content p {
+    font-size: 13px;
+  }
+  
+  .step-arrow {
+    font-size: 18px;
   }
   
   .footer-inner {
@@ -541,13 +621,32 @@ body {
     padding: 16px;
   }
   
-  .glass-card {
-    padding: 10px;
+  .workflow-presentation {
+    padding: 12px;
+    gap: 10px;
   }
   
-  .editor-line {
-    padding: 6px 8px;
-    font-size: 13px;
+  .workflow-step {
+    padding: 10px;
+    gap: 10px;
+  }
+  
+  .step-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+  
+  .step-content h4 {
+    font-size: 14px;
+  }
+  
+  .step-content p {
+    font-size: 12px;
+  }
+  
+  .step-arrow {
+    font-size: 16px;
   }
   
   .logo-text {
@@ -580,4 +679,3 @@ body {
     font-size: 15px;
   }
 }
-.editor-line .typing { flex: 1 1 auto; min-width: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
