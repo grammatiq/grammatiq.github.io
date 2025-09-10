@@ -35,46 +35,63 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  const form = document.getElementById('waitlist-form');
-  const emailInput = document.getElementById('mce-EMAIL');
-  const hint = document.getElementById('form-hint');
-  const submitBtn = document.getElementById('submit-btn');
-  const consent = document.getElementById('consent');
+  // Handle both forms
+  const forms = [
+    {
+      form: document.getElementById('waitlist-form'),
+      emailInput: document.getElementById('mce-EMAIL'),
+      hint: document.getElementById('form-hint'),
+      submitBtn: document.getElementById('submit-btn')
+    },
+    {
+      form: document.getElementById('final-waitlist-form'),
+      emailInput: document.getElementById('final-email'),
+      hint: document.getElementById('final-form-hint'),
+      submitBtn: document.getElementById('final-submit-btn')
+    }
+  ];
 
-  const showHint = (message, type = 'info') => {
-    if (!hint) return;
-    hint.textContent = message;
-    hint.style.color = type === 'error' ? '#fca5a5' : '#b6c2d6';
+  const showHint = (hintElement, message, type = 'info') => {
+    if (!hintElement) return;
+    hintElement.textContent = message;
+    hintElement.style.color = type === 'error' ? '#fca5a5' : type === 'success' ? '#34d399' : '#b6c2d6';
   };
 
-  if (form && emailInput && submitBtn && consent) {
-    form.addEventListener('submit', (e) => {
-      const email = emailInput.value.trim();
-      if (!email) {
+  forms.forEach(({ form, emailInput, hint, submitBtn }) => {
+    if (form && emailInput && submitBtn) {
+      form.addEventListener('submit', (e) => {
+        const email = emailInput.value.trim();
+        if (!email) {
+          e.preventDefault();
+          showHint(hint, 'Kérlek, add meg az e‑mail‑címed.', 'error');
+          emailInput.focus();
+          return;
+        }
+        
+        // For demo purposes, show success message instead of submitting
         e.preventDefault();
-        showHint('Kérlek, add meg az e‑mail‑címed.', 'error');
-        emailInput.focus();
-        return;
-      }
-      if (!consent.checked) {
-        e.preventDefault();
-        showHint('Kérlek, jelöld be a hozzájárulást.', 'error');
-        consent.focus();
-        return;
-      }
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Küldés…';
-      showHint('Átirányítás a Mailchimpre…');
-    });
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Feliratkozva!';
+        showHint(hint, 'Köszönjük! Értesítünk, amint indul a béta.', 'success');
+        
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          form.reset();
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Feliratkozom';
+          showHint(hint, '');
+        }, 3000);
+      });
 
-    emailInput.addEventListener('input', () => {
-      if (emailInput.value.length > 0) {
-        showHint('Az adataidat biztonságosan kezeljük.');
-      } else {
-        showHint('');
-      }
-    });
-  }
+      emailInput.addEventListener('input', () => {
+        if (emailInput.value.length > 0) {
+          showHint(hint, 'Az adataidat biztonságosan kezeljük.');
+        } else {
+          showHint(hint, '');
+        }
+      });
+    }
+  });
 
   // Demo: dinamikus gépelés és transzformáció (több variáns)
   const originalTarget = document.getElementById('typed-original');
