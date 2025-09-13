@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   forms.forEach(({ form, emailInput, hint, submitBtn }) => {
     if (form && emailInput && submitBtn) {
+      const originalBtnText = submitBtn.textContent;
       form.addEventListener('submit', (e) => {
         const email = emailInput.value.trim();
         if (!email) {
@@ -78,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
           form.reset();
           submitBtn.disabled = false;
-          submitBtn.textContent = 'Feliratkozom';
+          submitBtn.textContent = originalBtnText || 'Feliratkozom';
           showHint(hint, '');
         }, 3000);
       });

@@ -154,12 +154,37 @@ body {
 
 /* Hero */
 .hero { padding: 64px 0 24px; }
-.hero-inner { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; }
-.hero-copy h1 { font-size: clamp(30px, 5vw, 48px); line-height: 1.1; margin: 0 0 12px; }
+.hero-inner { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
+.hero-copy h1 { font-size: clamp(34px, 6vw, 56px); line-height: 1.1; margin: 0 0 12px; }
 .accent { color: var(--accent); }
 .lead { color: var(--muted); font-size: 18px; margin: 0 0 16px; }
 .benefits { margin: 0 0 20px; padding-left: 18px; }
 .benefits li { margin: 6px 0; }
+
+/* Problem / Solution (short) */
+.problem-solution { padding: 24px 0; }
+.problem-solution h2 { margin: 0 0 12px; text-align: center; font-size: 22px; }
+.bullets { margin: 0; padding-left: 18px; color: var(--muted); }
+.bullets li { margin: 6px 0; }
+
+/* Mini benefit list */
+.benefits-mini { padding: 8px 0 24px; }
+.checks { 
+  display: grid; 
+  gap: 10px; 
+  grid-template-columns: repeat(3, 1fr); 
+  list-style: none; 
+  padding: 0; 
+  margin: 0; 
+}
+.checks li { 
+  background: var(--card); 
+  border: 1px solid rgba(255,255,255,0.08); 
+  border-radius: 10px; 
+  padding: 12px 14px; 
+  color: var(--text); 
+  text-align: center; 
+}
 
 .cta-panel {
   background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
@@ -569,7 +594,7 @@ body {
   
   .hero { padding: 32px 0 24px; }
   .hero-inner { gap: 24px; }
-  .hero-copy h1 { font-size: clamp(28px, 8vw, 36px); }
+  .hero-copy h1 { font-size: clamp(30px, 8vw, 42px); }
   .lead { font-size: 16px; }
   
   .form-row { 
@@ -704,10 +729,14 @@ body {
   .benefits li {
     margin: 8px 0;
   }
+
+  .checks {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {
-  .hero-copy h1 { font-size: 26px; }
+  .hero-copy h1 { font-size: 28px; }
   .lead { font-size: 15px; }
   
   .cta-panel {
