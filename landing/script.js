@@ -77,19 +77,12 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
         
-        // For demo purposes, show success message instead of submitting
-        e.preventDefault();
+        // Disable button while submitting
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Feliratkozva!';
-        showHint(hint, 'Köszönjük! Értesítünk, amint indul a béta.', 'success');
+        submitBtn.textContent = 'Folyamatban...';
         
-        // Reset form after 3 seconds
-        setTimeout(() => {
-          form.reset();
-          submitBtn.disabled = false;
-          submitBtn.textContent = originalBtnText || 'Feliratkozom';
-          showHint(hint, '');
-        }, 3000);
+        // Let the form submit happen
+        // Mailchimp will handle the redirect/response
       });
 
       emailInput.addEventListener('input', () => {
