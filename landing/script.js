@@ -41,13 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
       form: document.getElementById('waitlist-form'),
       emailInput: document.getElementById('mce-EMAIL'),
       hint: document.getElementById('form-hint'),
-      submitBtn: document.getElementById('submit-btn')
+      submitBtn: document.getElementById('submit-btn'),
+      consent: document.getElementById('consent-1')
     },
     {
       form: document.getElementById('final-waitlist-form'),
       emailInput: document.getElementById('final-email'),
       hint: document.getElementById('final-form-hint'),
-      submitBtn: document.getElementById('final-submit-btn')
+      submitBtn: document.getElementById('final-submit-btn'),
+      consent: document.getElementById('final-consent-1')
     }
   ];
 
@@ -57,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     hintElement.style.color = type === 'error' ? '#fca5a5' : type === 'success' ? '#34d399' : '#b6c2d6';
   };
 
-  forms.forEach(({ form, emailInput, hint, submitBtn }) => {
+  forms.forEach(({ form, emailInput, hint, submitBtn, consent }) => {
     if (form && emailInput && submitBtn) {
       const originalBtnText = submitBtn.textContent;
       form.addEventListener('submit', (e) => {
@@ -66,6 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
           e.preventDefault();
           showHint(hint, 'Kérlek, add meg az e‑mail‑címed.', 'error');
           emailInput.focus();
+          return;
+        }
+        if (consent && !consent.checked) {
+          e.preventDefault();
+          showHint(hint, 'Kérlek, fogadd el az adatkezelési feltételeket.', 'error');
+          consent.focus();
           return;
         }
         
