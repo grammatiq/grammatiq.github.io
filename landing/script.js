@@ -77,12 +77,48 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
         
+        // Prevent default form submit
+        e.preventDefault();
+        
+        // Get the form action URL and convert it to AJAX endpoint
+        const formAction = form.action;
+        const ajaxUrl = formAction.replace('/post?', '/post-json?') + '&c=?';
+        
         // Disable button while submitting
         submitBtn.disabled = true;
         submitBtn.textContent = 'Folyamatban...';
+
+        // Prepare form data
+        const formData = new FormData(form);
+        const searchParams = new URLSearchParams();
+        for (const [key, value] of formData) {
+          searchParams.append(key, value);
+        }
         
-        // Let the form submit happen
-        // Mailchimp will handle the redirect/response
+        // Send AJAX request
+        fetch(ajaxUrl, {
+          method: 'POST',
+          body: searchParams,
+          mode: 'no-cors'
+        }).then(() => {
+          // Success
+          submitBtn.textContent = 'Feliratkozva!';
+          showHint(hint, 'Köszönjük! Értesítünk, amint indul a próbaverzió.', 'success');
+          form.reset();
+          
+          // Reset button after 3 seconds
+          setTimeout(() => {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalBtnText;
+            showHint(hint, '');
+          }, 3000);
+        }).catch(error => {
+          // Error
+          console.error('Subscription error:', error);
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+          showHint(hint, 'Hiba történt. Kérjük, próbáld újra később.', 'error');
+        });
       });
 
       emailInput.addEventListener('input', () => {
