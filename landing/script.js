@@ -2,6 +2,90 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
+  // Cookie consent & conditional analytics
+  const CONSENT_KEY = 'grammatiq_cookie_consent'; // values: 'accepted' | 'rejected'
+  const gaMeta = document.querySelector('meta[name="ga-measurement-id"]');
+  const GA_ID = gaMeta ? gaMeta.getAttribute('content') || '' : '';
+  const bannerEl = document.getElementById('cookie-consent');
+  const acceptBtn = document.getElementById('cookie-accept');
+  const rejectBtn = document.getElementById('cookie-reject');
+
+  const getConsent = () => localStorage.getItem(CONSENT_KEY);
+  const setConsent = (value) => localStorage.setItem(CONSENT_KEY, value);
+
+  const loadGA = (measurementId) => {
+    if (!measurementId || window.dataLayer) return; // already loaded or missing
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ window.dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', measurementId, { anonymize_ip: true });
+    const gtagScript = document.createElement('script');
+    gtagScript.async = true;
+    gtagScript.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+    document.head.appendChild(gtagScript);
+    const inline = document.createElement('script');
+    inline.textContent = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config','${measurementId}',{anonymize_ip:true});`;
+    document.head.appendChild(inline);
+  };
+
+  const maybeShowBannerOrLoad = () => {
+    const consent = getConsent();
+    if (consent === 'accepted') {
+      if (GA_ID) loadGA(GA_ID);
+      if (bannerEl) bannerEl.hidden = true;
+    } else if (consent === 'rejected') {
+      if (bannerEl) bannerEl.hidden = true;
+    } else {
+      if (bannerEl) bannerEl.hidden = false;
+    }
+  };
+
+  if (acceptBtn) acceptBtn.addEventListener('click', () => { setConsent('accepted'); maybeShowBannerOrLoad(); });
+  if (rejectBtn) rejectBtn.addEventListener('click', () => { setConsent('rejected'); maybeShowBannerOrLoad(); });
+  maybeShowBannerOrLoad();
+
+  // Várólista számláló – valós adat lekérdezése AWS Lambda-ról
+  const SUBSCRIBER_COUNT_URL = 'https://s7dly2vj2zgopec6orbrqzauha0yghbz.lambda-url.eu-central-1.on.aws/';
+  const counterEls = [
+    document.getElementById('waitlist-counter'),
+    document.getElementById('waitlist-counter-2')
+  ].filter(Boolean);
+
+  const formatCounterText = (count) => `Már ${count} feliratkozó a várólistán`;
+  
+  let currentCount = 0;
+
+  const renderCounter = () => {
+    counterEls.forEach(el => {
+      el.textContent = formatCounterText(currentCount);
+    });
+  };
+
+  renderCounter();
+  
+  // Valós szám lekérése és periódikus frissítése
+  const updateCounterFromRemote = async () => {
+    try {
+      const res = await fetch(SUBSCRIBER_COUNT_URL, {
+        method: 'GET',
+        headers: { 'Accept': 'application/json' },
+        cache: 'no-store'
+      });
+      const data = await res.json().catch(() => null);
+      if (res.ok && data && data.success && typeof data.subscriber_count === 'number') {
+        const next = Math.max(0, Math.floor(data.subscriber_count));
+        if (Number.isFinite(next) && next !== currentCount) {
+          currentCount = next;
+          renderCounter();
+        }
+      }
+    } catch (_) {
+      // hálózati/CORS hibák némítása
+    }
+  };
+  updateCounterFromRemote();
+  setInterval(updateCounterFromRemote, 60000);
+
   // Mobil menü működés
   const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
   const mobileNav = document.querySelector('.mobile-nav');
@@ -105,6 +189,9 @@ document.addEventListener('DOMContentLoaded', () => {
           submitBtn.textContent = 'Feliratkozva!';
           showHint(hint, 'Köszönjük! Értesítünk, amint indul a próbaverzió.', 'success');
           form.reset();
+
+          // Valós számláló frissítése a távoli végpontból
+          updateCounterFromRemote();
           
           // Reset button after 3 seconds
           setTimeout(() => {

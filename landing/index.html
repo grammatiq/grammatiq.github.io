@@ -11,13 +11,32 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Grammatiq – A magyar nyelvi asszisztens marketingeseknek" />
     <meta property="og:description" content="Gyorsabb, ütősebb, hibátlan szövegek – magyar nyelvre testre szabva. Iratkozz fel a próbaverzióra!" />
-    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:image" content="./logo.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
+    <link rel="icon" href="./favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./site.webmanifest" />
+
     <link rel="stylesheet" href="./styles.css" />
+
+    <!-- GA4 measurement ID (replace with your real ID) -->
+    <meta name="ga-measurement-id" content="G-SMF1TBC89T" />
+
+    <style>
+      .cookie-consent { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 9999; padding: 14px 16px; border-radius: 12px; background: rgba(11, 18, 32, 0.9); color: #e5eeff; box-shadow: 0 10px 30px rgba(0,0,0,0.35); backdrop-filter: saturate(180%) blur(8px); }
+      .cookie-consent .cookie-text { margin: 0; font-size: 14px; line-height: 1.5; color: #cbd5e1; }
+      .cookie-consent a { color: var(--accent); text-decoration: none; }
+      .cookie-consent a:hover { text-decoration: underline; }
+      .cookie-consent .cookie-actions { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
+      .cookie-consent .btn-secondary { background: transparent; color: #e5eeff; border: 1px solid #334155; padding: 10px 14px; border-radius: 8px; cursor: pointer; }
+      @media (min-width: 640px) { .cookie-consent { left: auto; right: 24px; width: 420px; } }
+    </style>
   </head>
   <body>
     <main>
@@ -25,13 +44,13 @@
         <div class="container hero-inner">
           <div class="hero-copy">
             <h1>Grammatiq: a magyar nyelvi asszisztens marketingeseknek</h1>
-            <p class="lead">Gyorsabb, ütősebb, hibátlan szövegek – magyar nyelvre testre szabva.</p>
+            <p class="lead">Gyorsabb, ütősebb, hibátlan szövegek – magyar nyelvre optimalizálva.</p>
 
             <div class="cta-panel">
               <form
                 id="waitlist-form"
                 class="waitlist-form"
-                action="https://YOUR_DC.list-manage.com/subscribe/post?u=YOUR_U&id=YOUR_ID"
+                action="https://letscode.us14.list-manage.com/subscribe/post?u=fc6815a258b0cf0fe6c3bd8a7&amp;id=43aff2b91c&amp;v_id=4741&amp;f_id=0075b4e5f0"
                 method="post"
                 target="_blank"
                 novalidate
@@ -47,17 +66,19 @@
                     required
                     inputmode="email"
                   />
-                  <button id="submit-btn" type="submit" class="btn-primary">Feliratkozom</button>
+                  <button id="submit-btn" type="submit" class="btn-primary">Csatlakozom az első 100 közé</button>
                 </div>
                 <div class="consent-row">
                   <input type="checkbox" id="consent-1" required />
-                  <label for="consent-1">Hozzájárulok, hogy e‑mailben értesítsetek a próbaverzióról, és elolvastam az <a href="./privacy.html" target="_blank" rel="noopener noreferrer">Adatkezelési tájékoztatót</a>. A feliratkozások kezeléséhez a Mailchimp (Intuit) szolgáltatását használjuk. Részletek: <a href="https://mailchimp.com/legal/" target="_blank" rel="noopener noreferrer">mailchimp.com/legal</a>.</label>
+                  <label for="consent-1">Elfogadom az adatkezelést</label>
                 </div>
+                <p class="consent-note">Elolvastam az <a href="./privacy.html" target="_blank" rel="noopener noreferrer">Adatkezelési tájékoztatót</a>. A feliratkozások kezeléséhez a Mailchimp (Intuit) szolgáltatását használjuk. Részletek: <a href="https://mailchimp.com/legal/" target="_blank" rel="noopener noreferrer">mailchimp.com/legal</a>.</p>
                 <p id="form-hint" class="form-hint" role="status" aria-live="polite"></p>
               </form>
             </div>
 
             <p class="early-note">Elsőként értesítünk, amikor indul a próbaverzió!</p>
+            <p class="beta-note"><strong>Béta indul: október 22.</strong> Első kör: <strong>100 hely</strong>. <span id="waitlist-counter">Már 0 feliratkozó a várólistán</span>.</p>
           </div>
         </div>
       </section>
@@ -83,6 +104,122 @@
         </div>
       </section>
 
+      <section class="quick-wins">
+        <div class="container">
+          <h2>Kinek és mire?</h2>
+          <div class="quick-wins-grid">
+            <article class="quick-win-item">
+              <span class="quick-win-icon" aria-hidden="true">📣</span>
+              <h3>Hirdetésvariánsok</h3>
+              <p>Facebook/Instagram szövegvariánsok egy kattintással – ütősebb CTA, rövidebb lead, kevesebb próbálkozás.</p>
+            </article>
+            <article class="quick-win-item">
+              <span class="quick-win-icon" aria-hidden="true">✉️</span>
+              <h3>Tárgymező optimalizálás</h3>
+              <p>E‑mail tárgyak A/B teszteléshez – magasabb megnyitási arány, világos előny és sürgetés.</p>
+            </article>
+            <article class="quick-win-item">
+              <span class="quick-win-icon" aria-hidden="true">📝</span>
+              <h3>Blog‑intro tömörítés</h3>
+              <p>TL;DR és ütős bevezető magyarra hangolva – gyorsabb belépés a tartalomba, jobb megtartás.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="personas">
+        <div class="container">
+          <h2>Célcsoportok</h2>
+          <div class="personas-grid">
+            <article class="persona-item">
+              <span class="persona-icon" aria-hidden="true">🏢</span>
+              <h3>Marketing ügynökségek</h3>
+              <p>Variáns‑gyártás, QA és finomhangolás gyorsítása; kevesebb kör, konzisztens hang.</p>
+            </article>
+            <article class="persona-item">
+              <span class="persona-icon" aria-hidden="true">🛍️</span>
+              <h3>E‑kereskedelem</h3>
+              <p>Termékleírások, hirdetések és e‑mail sablonok csiszolása – több kosár, több katt.</p>
+            </article>
+            <article class="persona-item">
+              <span class="persona-icon" aria-hidden="true">💼</span>
+              <h3>B2B tartalom</h3>
+              <p>LinkedIn posztok, hírlevelek és whitepaper kivonatok tömörebben, mégis szakmaian.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="fb-demo">
+        <div class="container">
+          <h2>Facebook hirdetés – Előtte vs utána</h2>
+          <p class="fb-demo-sub">Ugyanaz az ajánlat, kétféle megfogalmazás. Oldalnézethez hasonló kártya.</p>
+          <div class="fb-grid">
+            <article class="fb-ad">
+              <header class="fb-ad-header">
+                <div class="fb-avatar"><img src="./logo.png" alt="Grammatiq" /></div>
+                <div class="fb-head">
+                  <div class="fb-page">Grammatiq</div>
+                  <div class="fb-meta">Hirdetés · <span class="fb-globe" role="img" aria-label="Nyilvános">🌐</span></div>
+                </div>
+                <div class="fb-menu" aria-hidden="true">⋯</div>
+              </header>
+              <div class="fb-text">
+                Őszi akciónk keretében termékeink kedvezményes áron elérhetőek. Érdemes most vásárolni, mert hamarosan véget ér az ajánlat.
+              </div>
+              <div class="fb-media">
+                <img src="./fb-before.jpg" alt="Őszi akció illusztráció – shopping/őszi hangulat" loading="lazy" />
+              </div>
+              <div class="fb-linkbox">
+                <div class="fb-linkmeta">
+                  <div class="fb-link-domain">grammatiq.hu</div>
+                  <div class="fb-link-title">Grammatiq – Magyar nyelvi asszisztens</div>
+                  <div class="fb-link-desc">Gyorsabb, hibátlan szövegek – magyarra hangolva.</div>
+                </div>
+                <button class="fb-btn" type="button">További információ</button>
+              </div>
+              <div class="fb-actions" aria-hidden="true">
+                <span>👍 47</span>
+                <span>💬 6</span>
+                <span>↗️ Megosztás</span>
+              </div>
+              <div class="fb-badge">Előtte</div>
+            </article>
+
+            <article class="fb-ad fb-after">
+              <header class="fb-ad-header">
+                <div class="fb-avatar"><img src="./logo.png" alt="Grammatiq" /></div>
+                <div class="fb-head">
+                  <div class="fb-page">Grammatiq</div>
+                  <div class="fb-meta">Hirdetés · <span class="fb-globe" role="img" aria-label="Nyilvános">🌐</span></div>
+                </div>
+                <div class="fb-menu" aria-hidden="true">⋯</div>
+              </header>
+              <div class="fb-text">
+                <strong>Őszi villámakció: −20% ma éjfélig.</strong> Válaszd ki a kedvenced, és spórolj még ma. Kattints, mielőtt lejár!
+              </div>
+              <div class="fb-media fb-media-accent">
+                <img src="./fb-after.jpg" alt="Őszi villámakció illusztráció – dinamikus, figyelemfelkeltő" loading="lazy" />
+              </div>
+              <div class="fb-linkbox">
+                <div class="fb-linkmeta">
+                  <div class="fb-link-domain">grammatiq.hu</div>
+                  <div class="fb-link-title">Grammatiq – Magyar nyelvi asszisztens</div>
+                  <div class="fb-link-desc">Gyorsabb, hibátlan szövegek – magyarra hangolva.</div>
+                </div>
+                <button class="fb-btn" type="button">További információ</button>
+              </div>
+              <div class="fb-actions" aria-hidden="true">
+                <span>👍 189</span>
+                <span>💬 23</span>
+                <span>↗️ Megosztás</span>
+              </div>
+              <div class="fb-badge">Utána</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section id="final-cta" class="final-cta">
         <div class="container">
           <h2>Szeretnéd kipróbálni elsőként?</h2>
@@ -90,7 +227,7 @@
             <form
               id="final-waitlist-form"
               class="waitlist-form"
-              action="https://YOUR_DC.list-manage.com/subscribe/post?u=YOUR_U&id=YOUR_ID"
+              action="https://letscode.us14.list-manage.com/subscribe/post?u=fc6815a258b0cf0fe6c3bd8a7&amp;id=43aff2b91c&amp;v_id=4741&amp;f_id=0075b4e5f0"
               method="post"
               target="_blank"
               novalidate
@@ -106,16 +243,18 @@
                   required
                   inputmode="email"
                 />
-                <button id="final-submit-btn" type="submit" class="btn-primary">Értesítést kérek</button>
+                <button id="final-submit-btn" type="submit" class="btn-primary">Értesítést kérek – béta okt. 22.</button>
               </div>
               <div class="consent-row">
                 <input type="checkbox" id="final-consent-1" required />
-                <label for="final-consent-1">Hozzájárulok, hogy e‑mailben értesítsetek a próbaverzióról, és elolvastam az <a href="./privacy.html" target="_blank" rel="noopener noreferrer">Adatkezelési tájékoztatót</a>. A feliratkozások kezeléséhez a Mailchimp (Intuit) szolgáltatását használjuk. Részletek: <a href="https://mailchimp.com/legal/" target="_blank" rel="noopener noreferrer">mailchimp.com/legal</a>.</label>
+                <label for="final-consent-1">Elfogadom az adatkezelést</label>
               </div>
+              <p class="consent-note">Elolvastam az <a href="./privacy.html" target="_blank" rel="noopener noreferrer">Adatkezelési tájékoztatót</a>. A feliratkozások kezeléséhez a Mailchimp (Intuit) szolgáltatását használjuk. Részletek: <a href="https://mailchimp.com/legal/" target="_blank" rel="noopener noreferrer">mailchimp.com/legal</a>.</p>
               <p id="final-form-hint" class="form-hint" role="status" aria-live="polite"></p>
             </form>
           </div>
-          <p class="disclaimer">Csak értesítést küldünk, amikor elindul a próbaverzió. Semmi levélszemét.</p>
+          <p class="disclaimer">Csak indításkor írunk. Nincs spam.</p>
+          <p class="beta-note"><strong>Béta indul: október 22.</strong> 100 hely. <span id="waitlist-counter-2">Már 0 feliratkozó a várólistán</span>.</p>
         </div>
       </section>
     </main>
@@ -130,5 +269,17 @@
     </footer>
 
     <script src="./script.js" defer></script>
+
+    <!-- Cookie consent banner -->
+    <div id="cookie-consent" class="cookie-consent" role="dialog" aria-live="polite" aria-label="Sütikre vonatkozó hozzájárulás" hidden>
+      <p class="cookie-text">
+        A jobb felhasználói élmény és mérés érdekében opcionális analitikai sütiket (Google Analytics) használunk – csak hozzájárulással. Részletek az
+        <a href="./privacy.html" target="_blank" rel="noopener noreferrer">Adatkezelési tájékoztatóban</a>.
+      </p>
+      <div class="cookie-actions">
+        <button id="cookie-accept" class="btn-primary" type="button">Elfogadom</button>
+        <button id="cookie-reject" class="btn-secondary" type="button">Elutasítom</button>
+      </div>
+    </div>
   </body>
 </html>
