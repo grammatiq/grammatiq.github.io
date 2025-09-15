@@ -479,7 +479,7 @@ body {
 /* How It Works */
 .how-it-works { padding: 40px 0; }
 .how-it-works h2 { margin: 0 0 24px; text-align: center; }
-.steps-grid { display: grid; gap: 20px; grid-template-columns: repeat(4, 1fr); }
+.steps-grid { display: grid; gap: 20px; grid-template-columns: repeat(4, 1fr); margin-bottom: 40px; }
 .step-item { 
   background: var(--card); 
   border: 1px solid rgba(255,255,255,0.08); 
@@ -514,6 +514,66 @@ body {
   margin: 0; 
   color: var(--muted); 
   font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Workflow Example */
+.workflow-example {
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 24px;
+  margin-top: 32px;
+}
+.workflow-example h3 {
+  margin: 0 0 20px;
+  text-align: center;
+  color: var(--accent);
+}
+.workflow-chain {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.workflow-input {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 16px;
+  flex: 0 0 auto;
+  min-width: 200px;
+}
+.workflow-arrow {
+  font-size: 24px;
+  color: var(--accent);
+  font-weight: bold;
+  flex-shrink: 0;
+}
+.workflow-outputs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  min-width: 300px;
+}
+.output-item {
+  background: rgba(52, 211, 153, 0.1);
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  border-radius: 10px;
+  padding: 12px;
+}
+.input-label, .output-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.input-content, .output-content {
+  font-size: 14px;
+  color: var(--text);
   line-height: 1.4;
 }
 
@@ -698,6 +758,21 @@ body {
     gap: 16px;
   }
   
+  .workflow-chain {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+  
+  .workflow-arrow {
+    transform: rotate(90deg);
+  }
+  
+  .workflow-input, .workflow-outputs {
+    min-width: unset;
+    width: 100%;
+  }
+  
   .final-cta h2 {
     font-size: 24px;
   }
@@ -854,6 +929,14 @@ body {
   .steps-grid {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+  
+  .workflow-example {
+    padding: 16px;
+  }
+  
+  .workflow-example h3 {
+    font-size: 18px;
   }
   
   .final-cta h2 {
