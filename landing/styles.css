@@ -155,11 +155,134 @@ body {
 /* Hero */
 .hero { padding: 64px 0 24px; }
 .hero-inner { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
-.hero-copy h1 { font-size: clamp(34px, 6vw, 56px); line-height: 1.1; margin: 0 0 12px; }
+.hero-content { 
+  display: grid; 
+  grid-template-columns: 1fr 1.2fr; 
+  gap: 48px; 
+  align-items: center;
+  animation: fadeInUp 0.8s ease-out;
+}
+.hero-visual { display: flex; justify-content: center; }
+.hero-image { 
+  width: 100%; 
+  max-width: 500px; 
+  height: auto; 
+  border-radius: 16px; 
+  box-shadow: 0 16px 60px rgba(2, 8, 23, 0.6);
+  object-fit: cover;
+}
+.hero-copy h1 { 
+  font-size: clamp(32px, 5vw, 48px); 
+  line-height: 1.1; 
+  margin: 0 0 16px; 
+  background: linear-gradient(135deg, #22d3ee, #38bdf8, #0ea5e9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 .accent { color: var(--accent); }
-.lead { color: var(--muted); font-size: 18px; margin: 0 0 16px; }
+.lead { color: var(--text); font-size: 18px; margin: 0 0 24px; line-height: 1.6; }
 .benefits { margin: 0 0 20px; padding-left: 18px; }
 .benefits li { margin: 6px 0; }
+
+/* Hero Benefits */
+.hero-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 0 32px;
+}
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.benefit-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(2, 8, 23, 0.3);
+}
+.benefit-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.2), rgba(14, 165, 233, 0.2));
+  border-radius: 10px;
+}
+.benefit-text {
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* Urgency Header */
+.urgency-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.urgency-header h2 {
+  margin: 0 0 8px;
+  font-size: 24px;
+  color: var(--warning);
+  animation: pulse 2s infinite;
+}
+.urgency-text {
+  margin: 0;
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes fadeInUp {
+  0% { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* Social Proof */
+.social-proof {
+  margin-top: 24px;
+}
+.social-proof .beta-note {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+.countdown {
+  color: var(--warning);
+  font-size: 14px;
+}
+.scarcity {
+  color: #ef4444;
+  font-size: 16px;
+}
+.waitlist-info {
+  color: var(--accent);
+  font-size: 14px;
+}
 
 /* Problem / Solution (short) */
 .problem-solution { padding: 24px 0; }
@@ -684,6 +807,8 @@ body {
 @media (max-width: 980px) {
   .hero-inner { grid-template-columns: 1fr; gap: 32px; }
   .hero { padding: 48px 0 24px; }
+  .hero-content { grid-template-columns: 1fr; gap: 32px; }
+  .hero-visual { order: -1; }
 }
 
 @media (max-width: 720px) {
@@ -693,8 +818,15 @@ body {
   
   .hero { padding: 32px 0 24px; }
   .hero-inner { gap: 24px; }
-  .hero-copy h1 { font-size: clamp(30px, 8vw, 42px); }
+  .hero-content { gap: 24px; }
+  .hero-copy h1 { font-size: clamp(28px, 7vw, 38px); }
   .lead { font-size: 16px; }
+  .hero-benefits { gap: 12px; margin: 0 0 24px; }
+  .benefit-item { padding: 12px; }
+  .benefit-icon { width: 36px; height: 36px; font-size: 20px; }
+  .benefit-text { font-size: 15px; }
+  .urgency-header h2 { font-size: 20px; }
+  .social-proof .beta-note { padding: 12px; gap: 6px; }
   
   .form-row { 
     grid-template-columns: 1fr; 
@@ -860,8 +992,14 @@ body {
 }
 
 @media (max-width: 480px) {
-  .hero-copy h1 { font-size: 28px; }
+  .hero-copy h1 { font-size: 26px; }
   .lead { font-size: 15px; }
+  .hero-benefits { gap: 10px; }
+  .benefit-item { padding: 10px; gap: 10px; }
+  .benefit-icon { width: 32px; height: 32px; font-size: 18px; }
+  .benefit-text { font-size: 14px; }
+  .urgency-header h2 { font-size: 18px; }
+  .urgency-text { font-size: 14px; }
   
   .cta-panel {
     padding: 14px;

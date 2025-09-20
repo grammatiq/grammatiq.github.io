@@ -44,21 +44,54 @@ document.addEventListener('DOMContentLoaded', () => {
   if (rejectBtn) rejectBtn.addEventListener('click', () => { setConsent('rejected'); maybeShowBannerOrLoad(); });
   maybeShowBannerOrLoad();
 
+  // Egyszeri visszaszámlálás október 22. 00:00-ig (helyi idő szerint) – napokban
+  const daysLeftEl = document.getElementById('days-left');
+
+  const getNextOct22Midnight = (now) => {
+    const year = now.getFullYear();
+    // Helyi időzóna szerinti október (JS-ben 0-indexelt hónap, tehát 9 = október)
+    let target = new Date(year, 9, 22, 0, 0, 0, 0);
+    if (now.getTime() > target.getTime()) {
+      target = new Date(year + 1, 9, 22, 0, 0, 0, 0);
+    }
+    return target;
+  };
+
+  const renderDaysLeft = () => {
+    if (!daysLeftEl) return;
+    const now = new Date();
+    const target = getNextOct22Midnight(now);
+    const diffMs = target.getTime() - now.getTime();
+    const days = Math.max(0, Math.ceil(diffMs / (1000 * 60 * 60 * 24)));
+    daysLeftEl.textContent = String(days);
+  };
+
+  renderDaysLeft();
+
   // Várólista számláló – valós adat lekérdezése AWS Lambda-ról
   const SUBSCRIBER_COUNT_URL = 'https://s7dly2vj2zgopec6orbrqzauha0yghbz.lambda-url.eu-central-1.on.aws/';
   const counterEls = [
     document.getElementById('waitlist-counter'),
     document.getElementById('waitlist-counter-2')
   ].filter(Boolean);
-
-  const formatCounterText = (count) => `Már ${count} feliratkozó a várólistán`;
   
-  let currentCount = 0;
+  const remainingSpotsEl = document.getElementById('remaining-spots');
+  const MAX_SPOTS = 50;
+
+  const formatCounterText = (count) => `${count} vállalkozó már biztosította a helyét`;
+  
+  let currentCount = 8; // Kezdő érték az AIDA szöveghez illeszkedően
 
   const renderCounter = () => {
     counterEls.forEach(el => {
       el.textContent = formatCounterText(currentCount);
     });
+    
+    // Fennmaradó helyek frissítése
+    if (remainingSpotsEl) {
+      const remaining = Math.max(0, MAX_SPOTS - currentCount);
+      remainingSpotsEl.textContent = remaining;
+    }
   };
 
   renderCounter();
