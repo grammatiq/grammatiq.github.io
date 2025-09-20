@@ -3,15 +3,23 @@ document.addEventListener('DOMContentLoaded', () => {
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
   // Cookie consent & conditional analytics
-  const CONSENT_KEY = 'grammatiq_cookie_consent'; // values: 'accepted' | 'rejected'
+  const CONSENT_KEY = 'grammatiq_cookie_consent'; // stores JSON: { analytics: boolean, timestamp: number }
   const gaMeta = document.querySelector('meta[name="ga-measurement-id"]');
   const GA_ID = gaMeta ? gaMeta.getAttribute('content') || '' : '';
   const bannerEl = document.getElementById('cookie-consent');
   const acceptBtn = document.getElementById('cookie-accept');
-  const rejectBtn = document.getElementById('cookie-reject');
+  const detailsToggleBtn = document.getElementById('cookie-details-toggle');
+  const detailsEl = document.getElementById('cookie-details');
+  const primaryActionsEl = document.getElementById('cookie-primary-actions');
+  const analyticsSwitch = document.getElementById('cookie-analytics');
+  const saveBtn = document.getElementById('cookie-save');
 
-  const getConsent = () => localStorage.getItem(CONSENT_KEY);
-  const setConsent = (value) => localStorage.setItem(CONSENT_KEY, value);
+  const getConsent = () => {
+    const raw = localStorage.getItem(CONSENT_KEY);
+    if (!raw) return null;
+    try { return JSON.parse(raw); } catch (_) { return null; }
+  };
+  const setConsent = (obj) => localStorage.setItem(CONSENT_KEY, JSON.stringify(obj));
 
   const loadGA = (measurementId) => {
     if (!measurementId || window.dataLayer) return; // already loaded or missing
@@ -30,18 +38,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const maybeShowBannerOrLoad = () => {
     const consent = getConsent();
-    if (consent === 'accepted') {
-      if (GA_ID) loadGA(GA_ID);
-      if (bannerEl) bannerEl.hidden = true;
-    } else if (consent === 'rejected') {
+    if (consent && typeof consent === 'object') {
+      // Load services based on categories
+      if (consent.analytics && GA_ID) loadGA(GA_ID);
       if (bannerEl) bannerEl.hidden = true;
     } else {
       if (bannerEl) bannerEl.hidden = false;
     }
   };
 
-  if (acceptBtn) acceptBtn.addEventListener('click', () => { setConsent('accepted'); maybeShowBannerOrLoad(); });
-  if (rejectBtn) rejectBtn.addEventListener('click', () => { setConsent('rejected'); maybeShowBannerOrLoad(); });
+  if (acceptBtn) acceptBtn.addEventListener('click', () => {
+    setConsent({ analytics: true, timestamp: Date.now() });
+    maybeShowBannerOrLoad();
+  });
+
+  if (detailsToggleBtn && detailsEl) {
+    detailsToggleBtn.addEventListener('click', () => {
+      const isOpen = detailsToggleBtn.getAttribute('aria-expanded') === 'true';
+      detailsToggleBtn.setAttribute('aria-expanded', String(!isOpen));
+      if (!isOpen) {
+        detailsEl.hidden = false;
+        detailsEl.classList.add('active');
+        // Elrejtjük az elsődleges gombokat, ha belépett a részletekbe
+        if (primaryActionsEl) primaryActionsEl.style.display = 'none';
+      } else {
+        // Ha visszazárná (bár UI-ban már nem látja a fő gombokat), maradjon a részletek nézet
+        detailsEl.hidden = false;
+        detailsEl.classList.add('active');
+      }
+      // Prefill current stored choice
+      const stored = getConsent();
+      if (analyticsSwitch && stored && typeof stored === 'object') {
+        analyticsSwitch.checked = !!stored.analytics;
+      }
+    });
+  }
+
+  if (saveBtn) saveBtn.addEventListener('click', () => {
+    const analyticsEnabled = analyticsSwitch ? !!analyticsSwitch.checked : false;
+    setConsent({ analytics: analyticsEnabled, timestamp: Date.now() });
+    maybeShowBannerOrLoad();
+  });
+
+  // Nincs "Elutasítok mindent" gomb – teljes elutasítás nem kerül külön kezelésre
   maybeShowBannerOrLoad();
 
   // Egyszeri visszaszámlálás október 22. 00:00-ig (helyi idő szerint) – napokban

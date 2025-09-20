@@ -35,6 +35,15 @@
       .cookie-consent a:hover { text-decoration: underline; }
       .cookie-consent .cookie-actions { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
       .cookie-consent .btn-secondary { background: transparent; color: #e5eeff; border: 1px solid #334155; padding: 10px 14px; border-radius: 8px; cursor: pointer; }
+      .cookie-details { margin-top: 10px; padding-top: 10px; border-top: 1px solid #334155; display: none; }
+      .cookie-details.active { display: block; }
+      .cookie-row { display: flex; align-items: center; justify-content: space-between; margin: 8px 0; font-size: 14px; color: #cbd5e1; }
+      .cookie-row small { color: #94a3b8; }
+      .cookie-switch { appearance: none; width: 44px; height: 24px; background: #1f2937; border: 1px solid #334155; border-radius: 999px; position: relative; cursor: pointer; }
+      .cookie-switch::after { content: ''; position: absolute; width: 18px; height: 18px; top: 2px; left: 2px; background: #e5eeff; border-radius: 50%; transition: transform .2s ease; }
+      .cookie-switch:checked { background: #0ea5e9; border-color: #0ea5e9; }
+      .cookie-switch:checked::after { transform: translateX(20px); }
+      .cookie-switch[disabled] { opacity: 0.6; cursor: not-allowed; }
       @media (min-width: 640px) { .cookie-consent { left: auto; right: 24px; width: 420px; } }
     </style>
   </head>
@@ -324,9 +333,28 @@
         A jobb felhasználói élmény és mérés érdekében opcionális analitikai sütiket (Google Analytics) használunk – csak hozzájárulással. Részletek az
         <a href="./privacy.html" target="_blank" rel="noopener noreferrer">Adatkezelési tájékoztatóban</a>.
       </p>
-      <div class="cookie-actions">
-        <button id="cookie-accept" class="btn-primary" type="button">Elfogadom</button>
-        <button id="cookie-reject" class="btn-secondary" type="button">Elutasítom</button>
+      <div id="cookie-primary-actions" class="cookie-actions">
+        <button id="cookie-accept" class="btn-primary" type="button">Elfogadok mindent</button>
+        <button id="cookie-details-toggle" class="btn-secondary" type="button" aria-expanded="false" aria-controls="cookie-details">Részletek</button>
+      </div>
+      <div id="cookie-details" class="cookie-details" hidden>
+        <div class="cookie-row">
+          <div>
+            <div>Szükséges sütik</div>
+            <small>Mindig aktív – az oldal működéséhez szükséges.</small>
+          </div>
+          <input class="cookie-switch" type="checkbox" checked disabled aria-label="Szükséges sütik" />
+        </div>
+        <div class="cookie-row">
+          <div>
+            <div>Analitikai sütik (Google Analytics)</div>
+            <small>Segít javítani az oldalt, anonimizált méréssel.</small>
+          </div>
+          <input id="cookie-analytics" class="cookie-switch" type="checkbox" aria-label="Analitikai sütik" />
+        </div>
+        <div class="cookie-actions">
+          <button id="cookie-save" class="btn-primary" type="button">Beállítások mentése</button>
+        </div>
       </div>
     </div>
   </body>
