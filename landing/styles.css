@@ -1077,6 +1077,32 @@ body {
     font-size: 18px;
   }
   
+/* Product Preview */
+.product-preview { padding: 40px 0; }
+.product-preview h2 { margin: 0 0 20px; text-align: center; }
+.screenshot-card {
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 16px 60px rgba(2, 8, 23, 0.4);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.screenshot-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.caption {
+  margin: 10px 2px 2px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
   .final-cta h2 {
     font-size: 22px;
   }
