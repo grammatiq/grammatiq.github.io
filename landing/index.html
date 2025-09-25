@@ -28,7 +28,17 @@
     <!-- 100% privacy-first analytics -->
     <script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 
-    
+   <!-- Hotjar Tracking Code for Grammatiq -->
+<script>
+  (function(h,o,t,j,a,r){
+      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+      h._hjSettings={hjid:6530181,hjsv:6};
+      a=o.getElementsByTagName('head')[0];
+      r=o.createElement('script');r.async=1;
+      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+      a.appendChild(r);
+  })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script> 
   </head>
   <body>
     <main>
@@ -109,8 +119,8 @@
               <div class="social-proof">
                 <p class="beta-note">
                   <span class="countdown">⏳ <strong>Béta indul: október 22.</strong></span>
-                  <span class="scarcity">🔥 <strong>Már csak <span id="remaining-spots">42</span> hely van!</strong></span>
-                  <span class="waitlist-info" id="waitlist-counter">8 vállalkozó már biztosította a helyét</span>
+                  <span class="scarcity">🔥 <strong>Már csak <span id="remaining-spots">...</span> hely van!</strong></span>
+                  <span class="waitlist-info" id="waitlist-counter">... vállalkozó már biztosította a helyét</span>
                 </p>
               </div>
             </div>
@@ -178,37 +188,88 @@
       <section class="how-it-works">
         <div class="container">
           <h2>Hogyan működik?</h2>
-          <div class="steps-grid">
+          <div class="workflow-steps">
             <div class="step-item">
               <div class="step-number">1</div>
-              <h3>Termékinfó megadása</h3>
-              <p>Írd be a termék vagy szolgáltatás alapadatait: név, főbb tulajdonságok, célcsoport.</p>
+              <h3>Beállítások</h3>
+              <p>Állítsd be, mi alapján generáljon: termék, szolgáltatás, kampány célja vagy egyedi igény.</p>
             </div>
+            
             <div class="step-item">
               <div class="step-number">2</div>
-              <h3>Alap leírás generálása</h3>
-              <p>A Grammatiq létrehoz egy vonzó, SEO-optimalizált termékleírást magyarul.</p>
+              <h3>Brand Kit</h3>
+              <p>A Grammatiq megtanulja a brand hangnemét, értékeit és stílusát – minden szöveg ehhez igazodik.</p>
             </div>
+            
             <div class="step-item">
               <div class="step-number">3</div>
-              <h3>Marketing variánsok</h3>
-              <p>Automatikusan generál Facebook‑hirdetést, e‑mail‑tárgyat és Google Ads‑szöveget.</p>
-            </div>
-            <div class="step-item">
-              <div class="step-number">4</div>
-              <h3>Finomhangolás</h3>
-              <p>Egy kattintással módosíthatod a hangnemet, hosszúságot vagy stílust.</p>
+              <h3>Automatikus generálás</h3>
+              <p>Facebook és Google hirdetések, e-mail kampányok – mind a te brandedhez igazítva, rögtön exportálható formátumban.</p>
             </div>
           </div>
           
-          <div class="screenshot-card">
-            <img
-              src="./flow.jpg"
-              alt="Grammatiq – a szerkesztőfelület részlete valós idejű javaslatokkal"
-              class="screenshot-image"
-              loading="lazy"
-            />
-            <p class="caption">Valós idejű javaslatok, hangnem, hossz és stílus finomhangolása – magyarul.</p>
+          <div class="workflow-benefits">
+            <div class="benefit-item">
+              <span class="benefit-icon">⚡</span>
+              <span class="benefit-text">Percek alatt kész kampány</span>
+            </div>
+            <div class="benefit-item">
+              <span class="benefit-icon">🎯</span>
+              <span class="benefit-text">Brandhez igazított hangnem</span>
+            </div>
+            <div class="benefit-item">
+              <span class="benefit-icon">📤</span>
+              <span class="benefit-text">Rögtön exportálható</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="product-gallery">
+        <div class="container">
+          <h2>Nézd meg működés közben</h2>
+          <p class="gallery-intro">Kattints a képekre, hogy megnézhesd, hogyan néz ki a Grammatiq valójában</p>
+          
+          <div class="gallery-grid">
+            <div class="gallery-item" data-lightbox="product-tour" data-title="Beállítások: Itt állítod be, milyen típusú tartalmat szeretnél generálni">
+              <img src="./assets/settings.png" alt="Grammatiq beállítások" />
+              <div class="gallery-overlay">
+                <span class="gallery-title">Beállítások</span>
+                <span class="gallery-subtitle">Kampány típusok</span>
+              </div>
+            </div>
+            
+            <div class="gallery-item" data-lightbox="product-tour" data-title="Brand Kit: A Grammatiq megtanulja a brand hangnemét és automatikusan ehhez igazítja minden szöveget">
+              <img src="./assets/brandkit.png" alt="Grammatiq Brand Kit" />
+              <div class="gallery-overlay">
+                <span class="gallery-title">Brand Kit</span>
+                <span class="gallery-subtitle">Hangnem beállítás</span>
+              </div>
+            </div>
+            
+            <div class="gallery-item" data-lightbox="product-tour" data-title="Facebook hirdetések: Automatikusan generált hirdetésszövegek különböző formátumokban és hosszúságokban">
+              <img src="./assets/facebook_ads.png" alt="Facebook hirdetések generálása" />
+              <div class="gallery-overlay">
+                <span class="gallery-title">Facebook Ads</span>
+                <span class="gallery-subtitle">Hirdetés variánsok</span>
+              </div>
+            </div>
+            
+            <div class="gallery-item" data-lightbox="product-tour" data-title="Google Ads: Címsorok és leírások generálása Google hirdetésekhez, különböző karakterlimitekkel">
+              <img src="./assets/google_ads.png" alt="Google Ads generálása" />
+              <div class="gallery-overlay">
+                <span class="gallery-title">Google Ads</span>
+                <span class="gallery-subtitle">Címsorok & leírások</span>
+              </div>
+            </div>
+            
+            <div class="gallery-item" data-lightbox="product-tour" data-title="E-mail kampányok: Tárgysorok és e-mail tartalmak generálása különböző kampánytípusokhoz">
+              <img src="./assets/emails.png" alt="E-mail kampányok" />
+              <div class="gallery-overlay">
+                <span class="gallery-title">E-mail kampányok</span>
+                <span class="gallery-subtitle">Tárgysorok & tartalom</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>

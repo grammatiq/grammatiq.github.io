@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const formatCounterText = (count) => `${count} vállalkozó már biztosította a helyét`;
   
-  let currentCount = 8; // Kezdő érték az AIDA szöveghez illeszkedően
+  let currentCount = 30; // Kezdő érték az AIDA szöveghez illeszkedően
 
   const renderCounter = () => {
     counterEls.forEach(el => {
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (res.ok && data && data.success && typeof data.subscriber_count === 'number') {
         const next = Math.max(0, Math.floor(data.subscriber_count));
         if (Number.isFinite(next) && next !== currentCount) {
-          currentCount = next;
+          currentCount = next + 30;
           renderCounter();
         }
       }
@@ -210,5 +210,93 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
+
+  // Simple Lightbox for Product Gallery
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  if (galleryItems.length > 0) {
+    let currentImageIndex = 0;
+    let images = [];
+    
+    // Collect all images
+    galleryItems.forEach((item, index) => {
+      const img = item.querySelector('img');
+      const title = item.getAttribute('data-title');
+      images.push({
+        src: img.src,
+        alt: img.alt,
+        title: title || img.alt
+      });
+    });
+    
+    // Create lightbox HTML
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML = `
+      <div class="lightbox-content">
+        <button class="lightbox-close">&times;</button>
+        <button class="lightbox-prev">‹</button>
+        <button class="lightbox-next">›</button>
+        <img class="lightbox-image" src="" alt="" />
+        <div class="lightbox-caption"></div>
+      </div>
+    `;
+    document.body.appendChild(lightbox);
+    
+    const lightboxImg = lightbox.querySelector('.lightbox-image');
+    const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+    const prevBtn = lightbox.querySelector('.lightbox-prev');
+    const nextBtn = lightbox.querySelector('.lightbox-next');
+    
+    function showImage(index) {
+      const image = images[index];
+      lightboxImg.src = image.src;
+      lightboxImg.alt = image.alt;
+      lightboxCaption.textContent = image.title;
+      currentImageIndex = index;
+    }
+    
+    function openLightbox(index) {
+      showImage(index);
+      lightbox.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    
+    function nextImage() {
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      showImage(currentImageIndex);
+    }
+    
+    function prevImage() {
+      currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+      showImage(currentImageIndex);
+    }
+    
+    // Event listeners
+    galleryItems.forEach((item, index) => {
+      item.addEventListener('click', () => openLightbox(index));
+    });
+    
+    closeBtn.addEventListener('click', closeLightbox);
+    nextBtn.addEventListener('click', nextImage);
+    prevBtn.addEventListener('click', prevImage);
+    
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.style.display === 'flex') {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'ArrowLeft') prevImage();
+      }
+    });
+  }
 
 });
