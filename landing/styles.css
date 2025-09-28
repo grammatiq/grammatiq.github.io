@@ -1272,6 +1272,64 @@ body {
   }
 }
 
+/* Loading States */
+.loader {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+}
+
+.loader-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top: 2px solid var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loader-skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.06) 25%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.06) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+  height: 1em;
+  display: inline-block;
+}
+
+.loader-skeleton.short {
+  width: 60px;
+}
+
+.loader-skeleton.medium {
+  width: 120px;
+}
+
+.loader-skeleton.long {
+  width: 180px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.loading {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.loaded {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
 /* Facebook-style demo */
 .fb-demo { padding: 16px 0 8px; }
 .fb-demo h2 { margin: 0 0 8px; text-align: center; font-size: 22px; }

@@ -42,22 +42,57 @@ document.addEventListener('DOMContentLoaded', () => {
   
   let currentCount = 30; // Kezdő érték az AIDA szöveghez illeszkedően
 
+  const showLoader = (element) => {
+    if (!element) return;
+    const loader = element.querySelector('.loader');
+    const content = element.querySelector('.content');
+    if (loader) {
+      loader.style.display = 'inline-flex';
+      element.classList.add('loading');
+    }
+    if (content) {
+      content.style.display = 'none';
+    }
+  };
+
+  const hideLoader = (element) => {
+    if (!element) return;
+    const loader = element.querySelector('.loader');
+    const content = element.querySelector('.content');
+    if (loader) {
+      loader.style.display = 'none';
+      element.classList.remove('loading');
+      element.classList.add('loaded');
+    }
+    if (content) {
+      content.style.display = 'inline';
+    }
+  };
+
   const renderCounter = () => {
     counterEls.forEach(el => {
-      el.textContent = formatCounterText(currentCount);
+      hideLoader(el);
+      el.innerHTML = `<span class="content">${formatCounterText(currentCount)}</span>`;
     });
     
     // Fennmaradó helyek frissítése
     if (remainingSpotsEl) {
+      hideLoader(remainingSpotsEl);
       const remaining = Math.max(0, MAX_SPOTS - currentCount);
-      remainingSpotsEl.textContent = remaining;
+      remainingSpotsEl.innerHTML = `<span class="content">${remaining}</span>`;
     }
   };
-
-  renderCounter();
   
   // Valós szám lekérése és periódikus frissítése
-  const updateCounterFromRemote = async () => {
+  const updateCounterFromRemote = async (showLoadingState = false) => {
+    // Show loaders if requested (for initial load or manual refresh)
+    if (showLoadingState) {
+      counterEls.forEach(showLoader);
+      showLoader(remainingSpotsEl);
+      // Add a small delay to make loading state visible
+      await new Promise(resolve => setTimeout(resolve, 500));
+    }
+    
     try {
       const res = await fetch(SUBSCRIBER_COUNT_URL, {
         method: 'GET',
@@ -69,14 +104,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const next = Math.max(0, Math.floor(data.subscriber_count));
         if (Number.isFinite(next) && next !== currentCount) {
           currentCount = next + 30;
-          renderCounter();
         }
       }
     } catch (_) {
       // hálózati/CORS hibák némítása
+    } finally {
+      // Always render the counter (with current data or fallback)
+      renderCounter();
     }
   };
-  updateCounterFromRemote();
+  updateCounterFromRemote(true); // Show loading state on initial load
   setInterval(updateCounterFromRemote, 60000);
 
   // Mobil menü működés
@@ -184,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
           form.reset();
 
           // Valós számláló frissítése a távoli végpontból
-          updateCounterFromRemote();
+          updateCounterFromRemote(true);
           
           // Reset button after 3 seconds
           setTimeout(() => {

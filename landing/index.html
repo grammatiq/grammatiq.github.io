@@ -108,8 +108,13 @@
               <div class="social-proof">
                 <p class="beta-note">
                   <span class="countdown">⏳ <strong>Béta indul: október 22.</strong></span>
-                  <span class="scarcity">🔥 <strong>Már csak <span id="remaining-spots">...</span> hely van!</strong></span>
-                  <span class="waitlist-info" id="waitlist-counter">... vállalkozó már biztosította a helyét</span>
+                  <span class="scarcity">🔥 <strong>Már csak <span id="remaining-spots"><span class="loader-skeleton short"></span></span> hely van!</strong></span>
+                  <span class="waitlist-info" id="waitlist-counter">
+                    <span class="loader">
+                      <span class="loader-spinner"></span>
+                      <span class="loader-skeleton medium"></span>
+                    </span>
+                  </span>
                 </p>
               </div>
             </div>
@@ -314,7 +319,12 @@
             </form>
           </div>
           <p class="disclaimer">Csak indításkor írunk. Nincs spam.</p>
-          <p class="beta-note"><strong>Béta indul: október 22.</strong> 50 hely. <span id="waitlist-counter-2">Már 0 feliratkozó a várólistán</span>.</p>
+          <p class="beta-note"><strong>Béta indul: október 22.</strong> 50 hely. <span id="waitlist-counter-2">
+            <span class="loader">
+              <span class="loader-spinner"></span>
+              <span class="loader-skeleton long"></span>
+            </span>
+          </span>.</p>
         </div>
       </section>
 
