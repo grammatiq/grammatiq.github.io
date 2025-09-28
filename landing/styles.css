@@ -1,14 +1,33 @@
 :root {
-  --bg: #0b1220;
-  --card: rgba(255, 255, 255, 0.06);
-  --text: #e5eefb;
-  --muted: #b6c2d6;
+  /* Light theme (default) */
+  --bg: #ffffff;
+  --card: #f8fafc;
+  --text: #1e293b;
+  --muted: #64748b;
   --accent: #22d3ee;
   --accent-strong: #06b6d4;
   --primary: #0ea5e9;
   --warning: #f59e0b;
   --ok: #34d399;
   --ring: rgba(14, 165, 233, 0.35);
+  --border: #e2e8f0;
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1220;
+    --card: rgba(255, 255, 255, 0.06);
+    --text: #e5eefb;
+    --muted: #b6c2d6;
+    --accent: #22d3ee;
+    --accent-strong: #06b6d4;
+    --primary: #0ea5e9;
+    --warning: #f59e0b;
+    --ok: #34d399;
+    --ring: rgba(14, 165, 233, 0.35);
+    --border: rgba(255, 255, 255, 0.1);
+  }
 }
 
 * { box-sizing: border-box; }
@@ -42,7 +61,7 @@ body {
   top: 0; z-index: 40;
   backdrop-filter: saturate(140%) blur(10px);
   background: linear-gradient(to bottom, rgba(10, 15, 26, 0.8), rgba(10, 15, 26, 0.35));
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid var(--border);
 }
 .header-inner {
   display: flex;
@@ -111,7 +130,7 @@ body {
   font-size: 18px;
   font-weight: 500;
   padding: 16px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border);
   min-height: 44px;
   display: flex;
   align-items: center;
@@ -197,7 +216,7 @@ body {
   align-items: center;
   gap: 12px;
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 16px;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -266,7 +285,7 @@ body {
   flex-direction: column;
   gap: 8px;
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 16px;
   text-align: center;
@@ -303,7 +322,7 @@ body {
 }
 .checks li { 
   background: #0e1627; 
-  border: 1px solid rgba(255,255,255,0.08); 
+  border: 1px solid var(--border); 
   border-radius: 10px; 
   padding: 12px 14px; 
   color: var(--text); 
@@ -312,7 +331,7 @@ body {
 
 .cta-panel {
   background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid var(--border);
   border-radius: 14px;
   padding: 18px;
   box-shadow: 0 10px 30px rgba(2, 8, 23, 0.6) inset, 0 10px 30px rgba(2, 8, 23, 0.2);
@@ -325,7 +344,7 @@ body {
 .form-row { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
 .waitlist-form input[type="email"] {
   background: rgba(10, 16, 28, 0.7);
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid var(--border);
   border-radius: 10px;
   padding: 14px 14px;
   color: var(--text);
@@ -364,7 +383,7 @@ body {
   align-items: center;
   justify-content: center;
   background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 40px;
   box-shadow: 0 16px 60px rgba(2, 8, 23, 0.6);
@@ -388,7 +407,7 @@ body {
 .workflow-presentation {
   width: min(600px, 90%);
   background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 24px;
   box-shadow: 0 16px 60px rgba(2, 8, 23, 0.6);
@@ -468,7 +487,7 @@ body {
 .quick-wins-grid { display: grid; gap: 20px; grid-template-columns: repeat(3, 1fr); }
 .quick-win-item { 
   background: var(--card); 
-  border: 1px solid rgba(255,255,255,0.08); 
+  border: 1px solid var(--border); 
   border-radius: 12px; 
   padding: 20px; 
   text-align: center;
@@ -501,7 +520,7 @@ body {
 .personas-grid { display: grid; gap: 20px; grid-template-columns: repeat(3, 1fr); }
 .persona-item { 
   background: var(--card); 
-  border: 1px solid rgba(255,255,255,0.08); 
+  border: 1px solid var(--border); 
   border-radius: 12px; 
   padding: 20px; 
   text-align: center;
@@ -561,14 +580,14 @@ body {
   padding: 40px 0; 
   background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
   border-top: 1px solid rgba(255,255,255,0.06);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid var(--border);
 }
 .notice-content { 
   display: flex; 
   align-items: center; 
   gap: 16px; 
   background: var(--card); 
-  border: 1px solid rgba(255,255,255,0.08); 
+  border: 1px solid var(--border); 
   border-radius: 12px; 
   padding: 20px;
   max-width: 600px;
@@ -611,7 +630,7 @@ body {
 }
 .step-item {
   background: var(--card);
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 24px;
   text-align: center;
@@ -694,7 +713,7 @@ body {
 .gallery-item {
   position: relative;
   background: var(--card);
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
@@ -823,7 +842,7 @@ body {
   padding: 60px 0; 
   background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
   border-top: 1px solid rgba(255,255,255,0.06);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid var(--border);
 }
 .final-cta h2 { 
   margin: 0 0 12px; 
@@ -866,7 +885,7 @@ body {
 
 .faq details { 
   background: var(--card); 
-  border: 1px solid rgba(255,255,255,0.08); 
+  border: 1px solid var(--border); 
   border-radius: 12px; 
   padding: 20px; 
   margin: 16px 0;
@@ -1244,7 +1263,7 @@ body {
 .product-preview h2 { margin: 0 0 20px; text-align: center; }
 .screenshot-card {
   background: var(--card);
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 14px;
   box-shadow: 0 16px 60px rgba(2, 8, 23, 0.4);
@@ -1299,7 +1318,7 @@ body {
 .fb-ad {
   position: relative;
   background: #0e1627;
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 12px;
   box-shadow: 0 8px 24px rgba(2,8,23,0.25);
@@ -1323,7 +1342,7 @@ body {
 .fb-text { color: var(--text); font-size: 14px; line-height: 1.5; margin-bottom: 10px; }
 .fb-media {
   background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid var(--border);
   border-radius: 10px;
   height: 160px;
   margin-bottom: 10px;
@@ -1361,7 +1380,7 @@ body {
 .fb-badge {
   position: absolute; top: 10px; right: 10px;
   background: rgba(2,8,23,0.7);
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid var(--border);
   color: var(--muted);
   font-size: 12px;
   padding: 2px 6px;

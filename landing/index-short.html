@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
     <title>Grammatiq – Magyar AI-asszisztens marketingszövegekhez</title>
     <meta name="description" content="5 perc alatt hibátlan termékleírások, Facebook-hirdetések és e-mailek magyarul. Próbáld ki ingyen!" />
-    <meta name="theme-color" content="#0ea5e9" />
+    <meta name="theme-color" content="#0ea5e9" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -25,6 +26,7 @@
 
     <style>
       :root {
+        /* Light theme (default) */
         --bg: #ffffff;
         --card: #f8fafc;
         --text: #1e293b;
@@ -33,6 +35,22 @@
         --accent-hover: #0284c7;
         --border: #e2e8f0;
         --success: #22c55e;
+        --error: #dc2626;
+      }
+
+      /* Dark theme */
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0f172a;
+          --card: rgba(255, 255, 255, 0.05);
+          --text: #f1f5f9;
+          --muted: #94a3b8;
+          --accent: #38bdf8;
+          --accent-hover: #0ea5e9;
+          --border: rgba(255, 255, 255, 0.1);
+          --success: #34d399;
+          --error: #f87171;
+        }
       }
 
       * { box-sizing: border-box; }
@@ -150,12 +168,19 @@
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
-        background: white;
+        background: var(--bg);
+        color: var(--text);
       }
 
       .email-input:focus {
         border-color: var(--accent);
-        box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+        box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .email-input:focus {
+          box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3);
+        }
       }
 
       .cta-button {
@@ -224,7 +249,7 @@
 
       .form-message.error {
         background: rgba(239, 68, 68, 0.1);
-        color: #dc2626;
+        color: var(--error);
         border: 1px solid rgba(239, 68, 68, 0.2);
       }
 
