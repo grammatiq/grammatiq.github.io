@@ -11,6 +11,11 @@
   --ok: #34d399;
   --ring: rgba(14, 165, 233, 0.35);
   --border: #e2e8f0;
+  --hover-bg: rgba(0, 0, 0, 0.05);
+  --active-bg: rgba(0, 0, 0, 0.1);
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.15);
+  --shadow-heavy: rgba(0, 0, 0, 0.25);
 }
 
 /* Dark theme */
@@ -27,6 +32,31 @@
     --ok: #34d399;
     --ring: rgba(14, 165, 233, 0.35);
     --border: rgba(255, 255, 255, 0.1);
+    --hover-bg: rgba(255, 255, 255, 0.1);
+    --active-bg: rgba(255, 255, 255, 0.2);
+    --shadow-light: rgba(2, 8, 23, 0.3);
+    --shadow-medium: rgba(2, 8, 23, 0.4);
+    --shadow-heavy: rgba(2, 8, 23, 0.6);
+  }
+
+  .site-header {
+    background: linear-gradient(to bottom, rgba(10, 15, 26, 0.8), rgba(10, 15, 26, 0.35));
+  }
+
+  .mobile-nav {
+    background: rgba(10, 15, 26, 0.95);
+  }
+
+  .lightbox-content {
+    background: rgba(10, 16, 28, 0.7);
+  }
+
+  .waitlist-form input[type="email"] {
+    background: rgba(10, 16, 28, 0.7);
+  }
+
+  .cta-panel {
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
   }
 }
 
@@ -60,7 +90,7 @@ body {
   position: sticky;
   top: 0; z-index: 40;
   backdrop-filter: saturate(140%) blur(10px);
-  background: linear-gradient(to bottom, rgba(10, 15, 26, 0.8), rgba(10, 15, 26, 0.35));
+  background: linear-gradient(to bottom, rgba(30, 41, 59, 0.8), rgba(30, 41, 59, 0.35));
   border-bottom: 1px solid var(--border);
 }
 .header-inner {
@@ -98,11 +128,11 @@ body {
 }
 
 .mobile-menu-toggle:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--hover-bg);
 }
 
 .mobile-menu-toggle:active {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--active-bg);
 }
 
 .mobile-nav {
@@ -164,11 +194,11 @@ body {
 }
 
 .mobile-nav-close:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--hover-bg);
 }
 
 .mobile-nav-close:active {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--active-bg);
 }
 
 /* Hero */
@@ -187,7 +217,7 @@ body {
   max-width: 500px; 
   height: auto; 
   border-radius: 16px; 
-  box-shadow: 0 16px 60px rgba(2, 8, 23, 0.6);
+  box-shadow: 0 16px 60px var(--shadow-heavy);
   object-fit: cover;
 }
 .hero-copy h1 { 
@@ -215,7 +245,7 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 16px;
@@ -223,7 +253,7 @@ body {
 }
 .benefit-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(2, 8, 23, 0.3);
+  box-shadow: 0 8px 25px var(--shadow-light);
 }
 .benefit-icon {
   font-size: 24px;
@@ -284,7 +314,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 16px;
@@ -321,7 +351,7 @@ body {
   margin: 0; 
 }
 .checks li { 
-  background: #0e1627; 
+  background: var(--card); 
   border: 1px solid var(--border); 
   border-radius: 10px; 
   padding: 12px 14px; 
@@ -330,11 +360,11 @@ body {
 }
 
 .cta-panel {
-  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 18px;
-  box-shadow: 0 10px 30px rgba(2, 8, 23, 0.6) inset, 0 10px 30px rgba(2, 8, 23, 0.2);
+  box-shadow: 0 10px 30px var(--shadow-heavy) inset, 0 10px 30px var(--shadow-light);
   isolation: isolate;
 }
 .cta-panel h2 { margin: 0 0 8px; font-size: 20px; }
@@ -343,7 +373,7 @@ body {
 .waitlist-form { display: grid; gap: 10px; }
 .form-row { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
 .waitlist-form input[type="email"] {
-  background: rgba(10, 16, 28, 0.7);
+  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 14px 14px;
@@ -386,7 +416,7 @@ body {
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 40px;
-  box-shadow: 0 16px 60px rgba(2, 8, 23, 0.6);
+  box-shadow: 0 16px 60px var(--shadow-heavy);
   min-height: 200px;
   text-align: center;
 }
@@ -410,7 +440,7 @@ body {
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 24px;
-  box-shadow: 0 16px 60px rgba(2, 8, 23, 0.6);
+  box-shadow: 0 16px 60px var(--shadow-heavy);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -429,7 +459,7 @@ body {
 
 .workflow-step:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(2, 8, 23, 0.3);
+  box-shadow: 0 8px 25px var(--shadow-light);
 }
 
 .workflow-step.final {
@@ -495,7 +525,7 @@ body {
 }
 .quick-win-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(2, 8, 23, 0.3);
+  box-shadow: 0 8px 25px var(--shadow-light);
 }
 .quick-win-icon { 
   font-size: 32px; 
@@ -528,7 +558,7 @@ body {
 }
 .persona-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(2, 8, 23, 0.3);
+  box-shadow: 0 8px 25px var(--shadow-light);
 }
 .persona-icon { 
   font-size: 32px; 
@@ -638,7 +668,7 @@ body {
 }
 .step-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(2, 8, 23, 0.3);
+  box-shadow: 0 8px 25px var(--shadow-light);
 }
 .step-number {
   width: 48px;
@@ -721,7 +751,7 @@ body {
 }
 .gallery-item:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(2, 8, 23, 0.4);
+  box-shadow: 0 12px 40px var(--shadow-medium);
 }
 .gallery-item img,
 .gallery-item picture {
@@ -810,14 +840,14 @@ body {
   transition: background-color 0.2s;
 }
 .lightbox-close:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--hover-bg);
 }
 .lightbox-prev,
 .lightbox-next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--hover-bg);
   border: none;
   color: white;
   font-size: 24px;
@@ -828,7 +858,7 @@ body {
 }
 .lightbox-prev:hover,
 .lightbox-next:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--active-bg);
 }
 .lightbox-prev {
   left: -60px;
@@ -894,7 +924,7 @@ body {
 
 .faq details:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(2, 8, 23, 0.3);
+  box-shadow: 0 8px 25px var(--shadow-light);
 }
 
 .faq summary { 
@@ -1266,7 +1296,7 @@ body {
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 14px;
-  box-shadow: 0 16px 60px rgba(2, 8, 23, 0.4);
+  box-shadow: 0 16px 60px var(--shadow-medium);
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -1317,7 +1347,7 @@ body {
 .fb-grid { display: grid; gap: 16px; grid-template-columns: 1fr 1fr; }
 .fb-ad {
   position: relative;
-  background: #0e1627;
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 12px;
