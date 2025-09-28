@@ -40,9 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const formatCounterText = (count) => `${count} vállalkozó már biztosította a helyét`;
   
-  let currentCount = 30; // Kezdő érték az AIDA szöveghez illeszkedően
+  let currentCount = null; // Betöltés alatt – amíg nincs adat, loader marad
 
   const renderCounter = () => {
+    if (!Number.isFinite(currentCount)) return; // amíg nincs szám, ne írjuk felül a loadert
     counterEls.forEach(el => {
       el.textContent = formatCounterText(currentCount);
     });
@@ -53,8 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
       remainingSpotsEl.textContent = remaining;
     }
   };
-
-  renderCounter();
   
   // Valós szám lekérése és periódikus frissítése
   const updateCounterFromRemote = async () => {
